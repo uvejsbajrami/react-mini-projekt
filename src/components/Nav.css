@@ -1,0 +1,10 @@
+.switchBtn {
+  display: flex;
+  align-items: center;
+  margin-top: 3px;
+}
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

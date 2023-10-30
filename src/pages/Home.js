@@ -5,27 +5,12 @@ import "./Home.css";
 function Home() {
   const [movieSearch, setMovieSearch] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
   const searchSubmitClick = (e) => {
     e.preventDefault();
     const searchValue = document.getElementById("searchInput").value;
     setSearchValue(searchValue);
   };
 
-  const darkTheme = () => {
-    if (!darkMode) {
-      setDarkMode(true);
-      document.querySelector(".themeModeButton").innerHTML = "Dark Mode";
-
-      document.querySelector(".p1").style.color = "black";
-      document.body.style.backgroundColor = "#f2f2f2";
-    } else {
-      document.querySelector(".themeModeButton").innerHTML = "White Mode";
-      document.querySelector(".p1").style.color = "white";
-      setDarkMode(false);
-      document.body.style.backgroundColor = "#0a1928";
-    }
-  };
   useEffect(() => {
     axios
       .get(
@@ -41,12 +26,6 @@ function Home() {
   return (
     <>
       <div className="container">
-        <button
-          className="btn  btn-outline-primary my-2 themeModeButton"
-          onClick={darkTheme}
-        >
-          Dark Mode
-        </button>
         <br />
         <p className="p1"> Welcome to Movie DB</p>
         <br />
@@ -93,7 +72,7 @@ function Home() {
                   </div>
                 </>
               ) : (
-                "Dont have that movie"
+                <p className='NoMovieSearch'>Dont have that movie</p>
               )}
             </div>
             <Link
